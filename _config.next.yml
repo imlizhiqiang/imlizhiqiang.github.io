@@ -42,6 +42,7 @@ custom_file_path:
 scheme: Gemini
 
 # Dark Mode
+# 在macos上，如果颜色主题选择自动模式，则只在夜间生效
 darkmode: true
 
 
