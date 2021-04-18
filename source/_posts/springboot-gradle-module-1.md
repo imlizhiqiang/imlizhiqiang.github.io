@@ -314,7 +314,7 @@ subprojects {
 
 5. 修改子模块配置文件
 
-与上面类似，app模块的配置修改为：
+与上面类似，app 模块的配置修改为：
 
 ```kotlin
 repositories {
@@ -326,7 +326,7 @@ dependencies {
 }
 ```
 
-而service的配置修改为：
+而 service 的配置修改为：
 
 ```kotlin
 repositories {
@@ -390,7 +390,6 @@ class IndexServiceImpl : IndexService {
 }
 ```
 
-
 ---
 
 遗留问题：
@@ -398,3 +397,4 @@ class IndexServiceImpl : IndexService {
 -   如何创建扁平结构？
 -   引入常用包？如 mybatis
 -   整合 springcloud？
+-   javakotlin 混编？
