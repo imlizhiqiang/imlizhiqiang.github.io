@@ -179,3 +179,58 @@ test {
 示例中 service3 就使用了与另两个子项目不同的 webflux 技术栈，导致它们的依赖不相容，所以不能在根项目中配置。
 
 ## Kotlin+KotlinDSL
+
+### 创建根项目
+
+![选择gradle、kotlin、JDK11](boot_kotlin_flat_1.png)
+
+### 创建子项目
+
+![创建子项目](boot_kotlin_flat_2.png)
+
+### 修改配置文件
+
+1. 删除根项目的src目录，向build.gradle.kts添加subprojects。这里直接整理了依赖
+
+```kotlin
+//...
+subprojects {
+    apply {
+        plugin("org.springframework.boot")
+        plugin("io.spring.dependency-management")
+        plugin("org.jetbrains.kotlin.plugin.spring")
+        plugin("org.jetbrains.kotlin.jvm")
+    }
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    <!-- dependencies {
+        implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+        runtimeOnly("com.h2database:h2")
+        runtimeOnly("org.postgresql:postgresql")
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "11"
+        }
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    } -->
+}
+//...
+```
+
+未完成。。。。
+
+https://docs.gradle.org/current/userguide/kotlin_dsl.html#sec:multi_project_builds
