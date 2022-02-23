@@ -23,20 +23,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="我对前端的看法前端开发整体上始终给我一种混乱、破碎、零散的感觉，好像一群乌合之众聚集在广场上，特别嘈杂喧嚣，但是振聋发聩的真知灼见非常少，像沙子中的金子一样少。 如果将开发过程比作盖房子，那么用前端技术开发，感觉是在用砂石混着泥水，一坨一坨地往上糊；而使用 java 技术开发，感觉是在用砖块，一块一块地往上垒。 java 在类型和面向对象上的设计和实现是如此的严格，甚至于说难听些就是保守死板。但就">
+<meta name="description" content="本来想写一个完整的逐步进行的教程，后来想想没有必要，很多步骤一搜就有，只写几个值得注意的点即可。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="李志强的博客">
-<meta property="og:url" content="http://example.com/2022/01/23/front-end/index.html">
+<meta property="og:title" content="使用hexo、github pages、travis CI构建个人博客的注意点（2021）">
+<meta property="og:url" content="http://example.com/2022/02/23/hexo-2021/index.html">
 <meta property="og:site_name" content="李志强的博客">
-<meta property="og:description" content="我对前端的看法前端开发整体上始终给我一种混乱、破碎、零散的感觉，好像一群乌合之众聚集在广场上，特别嘈杂喧嚣，但是振聋发聩的真知灼见非常少，像沙子中的金子一样少。 如果将开发过程比作盖房子，那么用前端技术开发，感觉是在用砂石混着泥水，一坨一坨地往上糊；而使用 java 技术开发，感觉是在用砖块，一块一块地往上垒。 java 在类型和面向对象上的设计和实现是如此的严格，甚至于说难听些就是保守死板。但就">
+<meta property="og:description" content="本来想写一个完整的逐步进行的教程，后来想想没有必要，很多步骤一搜就有，只写几个值得注意的点即可。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-23T14:03:24.765Z">
-<meta property="article:modified_time" content="2022-01-23T14:03:24.765Z">
+<meta property="article:published_time" content="2022-02-23T08:51:20.791Z">
+<meta property="article:modified_time" content="2022-02-23T08:51:20.791Z">
 <meta property="article:author" content="李志强">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2022/01/23/front-end/">
+<link rel="canonical" href="http://example.com/2022/02/23/hexo-2021/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title> | 李志强的博客</title>
+<title>使用hexo、github pages、travis CI构建个人博客的注意点（2021） | 李志强的博客</title>
   
 
 
@@ -148,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E5%AF%B9%E5%89%8D%E7%AB%AF%E7%9A%84%E7%9C%8B%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">我对前端的看法</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A3%E7%A1%AE%E7%89%88%E6%9C%AC%E7%9A%84-hexo"><span class="nav-number">1.</span> <span class="nav-text">安装正确版本的 hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-github-pages-%E4%BB%93%E5%BA%93%E5%92%8C%E5%85%B3%E8%81%94-travis-CI"><span class="nav-number">2.</span> <span class="nav-text">创建 github pages 仓库和关联 travis CI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E5%90%88-next-%E4%B8%BB%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">整合 next 主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D"><span class="nav-number">4.</span> <span class="nav-text">自定义域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="nav-number">5.</span> <span class="nav-text">在文章中插入图片</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -206,7 +206,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/front-end/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/23/hexo-2021/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -219,7 +219,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          使用hexo、github pages、travis CI构建个人博客的注意点（2021）
         </h1>
 
         <div class="post-meta-container">
@@ -230,12 +230,13 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-01-23 14:03:24" itemprop="dateCreated datePublished" datetime="2022-01-23T14:03:24+00:00">2022-01-23</time>
+      <time title="创建时间：2022-02-23 08:51:20" itemprop="dateCreated datePublished" datetime="2022-02-23T08:51:20+00:00">2022-02-23</time>
     </span>
 
   
 </div>
 
+            <div class="post-description">本来想写一个完整的逐步进行的教程，后来想想没有必要，很多步骤一搜就有，只写几个值得注意的点即可。</div>
         </div>
       </header>
 
@@ -243,13 +244,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="我对前端的看法"><a href="#我对前端的看法" class="headerlink" title="我对前端的看法"></a>我对前端的看法</h1><p>前端开发整体上始终给我一种混乱、破碎、零散的感觉，好像一群乌合之众聚集在广场上，特别嘈杂喧嚣，但是振聋发聩的真知灼见非常少，像沙子中的金子一样少。</p>
-<p>如果将开发过程比作盖房子，那么用前端技术开发，感觉是在用砂石混着泥水，一坨一坨地往上糊；而使用 java 技术开发，感觉是在用砖块，一块一块地往上垒。</p>
-<p>java 在类型和面向对象上的设计和实现是如此的严格，甚至于说难听些就是保守死板。但就是因为这种保守和死板，使得在用 java 开发程序时有一种坚固稳定的感觉，这种感觉不是虚幻的，事实证明 java 确实更加适合用来构建大型系统。而 js 这种语言更适合用来开发小系统，甚至是小的脚本程序，这本来就是它的设计目的。</p>
-<p>现在前端面对的主要矛盾在于，前端现有的语言及工具无法支持工程级别的大型程序的开发，无法满足这种大型开发需求。本质上是工具与需求之间的矛盾。手里没有金刚钻，但是接了瓷器活。但互联网时代的需求又不得不压在JavaScript上，因为它是前端开发唯一的选择。</p>
-<p>这个矛盾的成因，在于JavaScript是一门没有“主权”的语言，W3C本质上是一个大公司俱乐部，是一个类似联合国一样的松散的组织，它并没有任何实权，对JavaScript的实际解释权掌握在各大浏览器厂商手中。一日没有主权，JavaScript就一日不能真正地改进，其官方的语法标准也只是一纸空文，只是一个形式上的声明而已。</p>
-<p>前端社区本身也处于混乱状态，始终没有结成一个统一体，各种工具及相关社区层出不穷，开发者疲于奔命。</p>
-<p>对于开发者而言，学习前端技术一定要慎重。第一不能追新，一定要等到某个工具相当稳定之后再跟进；第二必须要有取舍，学的越多，亏得越多；第三不能局限于前端，一定要广泛地涉猎其他技术。</p>
+        <p>以前使用 hexo 结合 github pages 构建个人博客时，因为 github pages 官方的构建工具是 jekyll，基于 ruby，不支持 hexo 的自动构建，导致使用 hexo 需要自己手动完成构建过程并将源码与博客分开保存。这一点总觉得有一些不方便。我个人曾因为这个原因将博客迁移到阿里云上自建，用 jenkins 完成构建过程。</p>
+<p>但现在有了 travis CI，这个自动构建的问题得以解决。最新的 hexo 官网已经更新了相关文档，指导使用者如何使用 travis CI 完成自动构建。</p>
+<p>现在 hexo 自身的版本也有了较大更新，通过下文提到的新的主题安装方式，可以尽可能地保证自己的博客源代码仓库干净。</p>
+<p>在 2021 年春节期间我尝试了使用 hexo 在 github pages 上重建博客，感觉建好后整个“写作-构建-发布”的体验还是挺让人满意的。这里记录一下其中需要注意的几个点。</p>
+<h2 id="安装正确版本的-hexo"><a href="#安装正确版本的-hexo" class="headerlink" title="安装正确版本的 hexo"></a>安装正确版本的 hexo</h2><p>注意区分 hexo-cli 的版本和 hexo 本身的版本。hexo-cli 的版本久未更新，应该是比较稳定，没什么可更新的，但是要务必注意 hexo 本身的版本号，使用<code>hexo init</code>命令初始化一个示例，可以在 package.json 中看到 hexo 的版本号，<strong>这里务必保证 hexo 版本在 5.0.0 以上</strong>。</p>
+<h2 id="创建-github-pages-仓库和关联-travis-CI"><a href="#创建-github-pages-仓库和关联-travis-CI" class="headerlink" title="创建 github pages 仓库和关联 travis CI"></a>创建 github pages 仓库和关联 travis CI</h2><p>这里没什么可说的，hexo 官方文档的<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/github-pages">部署教程</a>很详尽，照着做即可，给出的配置文件直接复制粘贴，无需修改。</p>
+<h2 id="整合-next-主题"><a href="#整合-next-主题" class="headerlink" title="整合 next 主题"></a>整合 next 主题</h2><p>这里就很重要了。之所以要保证 hexo 版本在 5.0.0 以上，是因为自这个版本开始，安装主题的方式有了变化，除了传统的将主题仓库 clone 到 themes 文件夹中，还提供了 npm 包的形式。</p>
+<p>如果采用传统的 clone 仓库的方式，会引发一个问题，在本地调试时看到页面正常显示，但在 travis CI 构建后，却只能看见一片空白。经过排查，发现原因在于提交博客源代码文件时，主题文件不会被提交上去，因为主题是单独的另一个 git 仓库，这导致 travis CI 构建时其实是没有主题的，所以构建出来是一片空白。</p>
+<p>所以这里就要使用新添加的 npm 包的方式，用起来感觉要比传统方式体验好得多。无需 clone 主题的仓库，只需在博客源代码目录安装相应的 npm 包，例如 next 是<code>npm install --save hexo-theme-next</code>.然后仍然需要修改<code>_config.yml</code>中的 theme 配置项为 next。</p>
+<p>相应地，配置文件方式也有了改进，推荐的配置方式是在博客源代码目录下新建一个<code>_config.&lt;theme name&gt;.yml</code>的文件，例如 next 就是<code>_config.next.yml</code>.主题的相关配置都在这里。</p>
+<p>那么都有哪些主题配置项呢？需要参考 next 的官方文档，目前百度的网址仍然指向老版本的官网，而新的文档在<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/">这里</a>.</p>
+<p>使用如下命令，可复制一份默认配置到自己的配置文件中，然后自由修改配置即可。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp node_modules/hexo-theme-next/_config.yml _config.next.yml</span><br></pre></td></tr></table></figure>
+<p>新版本 next 提供了跟随本机操作系统的黑暗模式的支持，例如在 macos 上，如果系统配置为“自动模式”，则博客会表现为白天是白色调，而夜间则是暗色调。</p>
+<h2 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h2><p>我个人添加了一个阿里云的域名作为自定义域名。首先在阿里云域名的解析中加入一条 CNAME 记录，指向 github 提供的域名为 github.io 的博客地址，然后在 github pages 的 setting 中，将阿里云的域名填入 custom domain 中保存即可。</p>
+<p>这里要特别注意，还需要在博客源文件的 source 目录下（不是根目录下）创建一个 CNAME 文件，里面写上你的自定义域名，比如<code>www.xxx.com</code>，一起提交上去。否则每次 travis 自动构建之后，github pages 配置中的 custom domain 会变成空的。</p>
+<h2 id="在文章中插入图片"><a href="#在文章中插入图片" class="headerlink" title="在文章中插入图片"></a>在文章中插入图片</h2><p>网上找的方法都说要安装插件，其实完全没必要，自己手动就能搞定。</p>
+<p>首先在根配置文件<code>_config.yml</code>中更改配置项<code>post_asset_folder: true</code>，然后在<code>_posts</code>下面新建一个文件夹，名字与想配图片的文章名字相同，再把图片放进去，结果就得到如下的目录结构：</p>
+<pre><code>-   _posts
+    -   一篇文章.md
+    -   一篇文章
+        -   图片1.png
+</code></pre>
+<p>在文章中需要引入图片的地方，只需要按照 markdown 语法<code>![图片1](图片1.png)</code>写即可，无需加任何的路径前缀。</p>
 
     </div>
 
@@ -267,7 +285,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2022/01/23/front-end/" title="">http://example.com/2022/01/23/front-end/</a>
+      <a href="http://example.com/2022/02/23/hexo-2021/" title="使用hexo、github pages、travis CI构建个人博客的注意点（2021）">http://example.com/2022/02/23/hexo-2021/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -280,13 +298,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/01/23/hexo-2021/" rel="prev" title="使用hexo、github pages、travis CI构建个人博客的注意点（2021）">
-                  <i class="fa fa-chevron-left"></i> 使用hexo、github pages、travis CI构建个人博客的注意点（2021）
+                <a href="/2022/02/23/springboot-gradle-module-1/" rel="prev" title="SpringBoot+Gradle多模块项目配置（一）">
+                  <i class="fa fa-chevron-left"></i> SpringBoot+Gradle多模块项目配置（一）
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/01/23/springboot-gradle-module-2/" rel="next" title="SpringBoot+Gradle多模块项目配置（二）">
-                  SpringBoot+Gradle多模块项目配置（二） <i class="fa fa-chevron-right"></i>
+                <a href="/2022/02/23/front-end/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
