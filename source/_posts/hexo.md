@@ -60,7 +60,7 @@ jobs:
 
 注意将上述代码中的 node 版本修改为与本地一致。
 
-最后，在 github 网站上前往存储库的 Settings > Pages > Source，并将 branch 改为 gh-pages。
+最后，在 github 网站上存储库的 Settings > Pages > Build and deployment下面有三个下拉框，source选择deploy from a branch，branch选择`gh-pages`和`/(root)`，即可。
 
 ## 添加自定义域名
 
