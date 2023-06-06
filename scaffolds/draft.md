@@ -2,3 +2,7 @@
 title: {{ title }}
 tags:
 ---
+
+#
+
+<!-- more -->
