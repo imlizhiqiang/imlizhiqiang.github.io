@@ -1,0 +1,1 @@
+java的新模块化系统，module-info.java文件，对比以前的package-info.java文件。
